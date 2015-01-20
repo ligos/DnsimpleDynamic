@@ -1,0 +1,52 @@
+﻿{
+    // One or more domain names to update with address information.
+    // These will update IPv4 addresses (A records) and IPv6 addresses (AAAA records).
+    "names": {
+        "test.domain.com": {
+            // Update with public IPv4 address? Defaults to true if not listed.
+            "updatePublicIPV4": false,
+            // Update with private IPv4 address? Defaults to false if not listed.
+            "updatePrivateIPV4": false,
+            // Update with public IPv6 addresses? Defaults to true if not listed.
+            "updateIPv6": true,
+            // TTL for IPv4 DNS record in seconds. Defaults to 600 (10 mins).
+            "ttl_ipv4": 300,
+            // TTL for IPv6 DNS records in seconds. Defaults to 600 (10 mins).
+            "ttl_ipv6": 3600
+        },
+        "test.in.domain.com": {
+            // Update with public IPv4 address? Defaults to true if not listed.
+            "updatePublicIPV4": false,
+            // Update with private IPv4 address? Defaults to false if not listed.
+            "updatePrivateIPV4": true,
+            // Update with public IPv6 addresses? Defaults to true if not listed.
+            "updateIPv6": true,
+            // TTL for IPv4 DNS record in seconds. Defaults to 600 (10 mins).
+            "ttl_ipv4": 300,
+            // TTL for IPv6 DNS records in seconds. Defaults to 600 (10 mins).
+            "ttl_ipv6": 3600
+        }
+    },
+
+    // Method to obtain public IPv4 address, given that most dynamic DNS updates are done from a computer behind a NAT router.
+    // 'MikrotikRouter' will load address from a Mikrotik Router via its API; you will need to add credentials below and configure your router appropriately.
+    // 'Ipify' will do a web call to api.ipify.org to determine your public IP address.
+    "readPublicIpv4AddressFrom": "MikrotikRouter",
+
+    // Details for reading IPv4 address from MikroTik Router.
+    // To use this you must:
+    // 1. Have a MikroTik Router used as your Internet gateway / border router.
+    // 2. Allow API access.
+    // 3. Create a user with access policy to 'read' and 'API'.
+    "routerUser": "ddns",
+    "routerPassword": null, // This will be read on first run from the console and saved in encrypted form.
+    "routerAddress": "192.168.1.1",
+    "routerPublicInterfaces": [ "pppoe-isp" ],
+
+    // Username and Account API token for Dnsimple.
+    "dnsimpleUsername": "dnsimple@domain.com",
+    "dnsimpleApiToken": null, // This will be read on first run from the console and saved in encrypted form.
+
+    // Add a random string here to add additional security to the encrypted secret values.
+    "randomString": ""
+}
