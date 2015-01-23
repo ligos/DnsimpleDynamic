@@ -288,7 +288,7 @@ namespace MurrayGrant.DnsimpleDynamic
         {
             if (String.Equals(config.readPublicIpv4AddressFrom, "MikrotikRouter", StringComparison.OrdinalIgnoreCase))
                 return ReadPublicIpv4AddressesFromMikrotikRouter(config);
-            else if (String.Equals(config.readPublicIpv4AddressFrom, "Ipify", StringComparison.OrdinalIgnoreCase))
+            else if (String.Equals(config.readPublicIpv4AddressFrom, "Ipify", StringComparison.OrdinalIgnoreCase) || String.IsNullOrWhiteSpace(config.readPublicIpv4AddressFrom))
                 return Task.Run(() => new [] { ReadPublicIpv4AddressFromIpify(config).Result }.AsEnumerable());
             else
                 throw new Exception("Unknown method of getting public IPv4 address: " + config.readPublicIpv4AddressFrom);
