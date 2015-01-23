@@ -13,6 +13,7 @@ A Dynamic DNS client for [Dnsimple](http://dnsimple.com) in C#. Console program 
 * Apache License
 * Should work with Mono on Linux (in theory, untested)
 * No admin rights required; run as any user with network access
+* Minimal file logging; by default only logs when IP addresses change
 
 ## Requirements ##
 * A Windows computer (any version Vista / Server 2008 or newer should be fine)
