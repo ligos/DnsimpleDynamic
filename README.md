@@ -21,7 +21,7 @@ A Dynamic DNS client for [Dnsimple](http://dnsimple.com) in C#. Console program 
 * Account with [Dnsimple](dnsimple.com)
 
 ## Setup ##
-1. Download latest release from...
+1. Download latest release from the [Downloads](https://bitbucket.org/ligos/dnsimpledynamic/downloads) section (on the left)
 2. Unzip to a folder of your choosing (eg: c:\Program Files\DnsimpleDynamic)
 3. Edit config.json to set your Dnsimple username (but not API token, enter it in step 5).
 4. Add domain names to config.json (see below for sample configuration).
