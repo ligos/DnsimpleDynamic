@@ -8,7 +8,7 @@ A Dynamic DNS client for [Dnsimple](http://dnsimple.com) in C#. Console program 
 * Public IPv6 addresses
 * Multiple IP addresses (the DNS record is updated with all addresses found)
 * Can read public IPv4 from local network adapter, [ipify.org](ipify.org) or a [Mikrotik](http://routerboard.com/) router
-* Passwords stored securely using DPAPI (no plain text passwords in config files)
+* Passwords stored securely using [DPAPI](http://en.wikipedia.org/wiki/Data_Protection_API) (no plain text passwords in config files)
 * Only queries the Dnsimple API if local DNS is out of date
 * Apache License
 * Should work with Mono on Linux (in theory, untested)
@@ -35,8 +35,10 @@ Configuration examples to get you up and running. Configuration file is in JSON 
 
 ### Minimal Config ###
 
+This will get you started!
+
 ```
-#!JSON
+#!Javascript
 {
     // One or more domain names to update with address information.
     // These will update IPv4 addresses (A records) and IPv6 addresses (AAAA records).
@@ -56,7 +58,7 @@ Configuration examples to get you up and running. Configuration file is in JSON 
 Note that this will read all IP addresses from the current computer. So all DNS entries will point to the same IP. You will need to run DnsimpleDynamic on **each computer** if you want different IP addresses.
 
 ```
-#!JSON
+#!Javascript
 {
     // One or more domain names to update with address information.
     // These will update IPv4 addresses (A records) and IPv6 addresses (AAAA records).
@@ -80,7 +82,7 @@ Use Dnsimple to keep records of your internal devices / computers / servers. Use
 Note, you only need one device to maintain your public IPv4 address, so you can remove the public address on all other devices. Note that IPv6 doesn't really have the concept of private addresses (well, technically it does, but there's no reason to use them), so you can't update private or link local IPv6 addresses with this.
 
 ```
-#!JSON
+#!Javascript
 {
     // One or more domain names to update with address information.
     // These will update IPv4 addresses (A records) and IPv6 addresses (AAAA records).
@@ -109,7 +111,7 @@ DNS records all have a TTL (time to live), which affects how long they are cache
 IPv6 addresses work differently to IPv4 ones. It's common for a computer to have a *preferred* IPv6 address, and multiple *temporary* IPv6 addresses, which are still valid for the computer. So, you can safely set IPv6 TTLs higher. DnsimpleDynamic will maintain the preferred IPv6 address, but if DNS servers are still using the older temporary IPv6 address, your computer will still be reachable. (On a side note, IPv6 rocks)!
 
 ```
-#!JSON
+#!Javascript
 {
     // One or more domain names to update with address information.
     // These will update IPv4 addresses (A records) and IPv6 addresses (AAAA records).
@@ -139,7 +141,7 @@ IPv6 addresses work differently to IPv4 ones. It's common for a computer to have
 A random string will add to the entropy used by the password encryption function. This does not have to be the same if you're running DnsimpleDynamic on multiple computers.
 
 ```
-#!JSON
+#!Javascript
 {
    ....
 
