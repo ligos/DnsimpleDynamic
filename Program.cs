@@ -286,10 +286,12 @@ namespace MurrayGrant.DnsimpleDynamic
 
         public static Task<IEnumerable<IPAddress>> GetPublicIpv4Addresses(Config config)
         {
-            if (String.Equals(config.readPublicIpv4AddressFrom, "MikrotikRouter", StringComparison.OrdinalIgnoreCase))
+            if (String.IsNullOrEmpty(config.readPublicIpv4AddressFrom))
+                return Task.FromResult(Enumerable.Empty<IPAddress>());
+            else if (String.Equals(config.readPublicIpv4AddressFrom, "MikrotikRouter", StringComparison.OrdinalIgnoreCase))
                 return ReadPublicIpv4AddressesFromMikrotikRouter(config);
             else if (String.Equals(config.readPublicIpv4AddressFrom, "Ipify", StringComparison.OrdinalIgnoreCase) || String.IsNullOrWhiteSpace(config.readPublicIpv4AddressFrom))
-                return Task.Run(() => new [] { ReadPublicIpv4AddressFromIpify(config).Result }.AsEnumerable());
+                return Task.Run(() => new[] { ReadPublicIpv4AddressFromIpify(config).Result }.AsEnumerable());
             else
                 throw new Exception("Unknown method of getting public IPv4 address: " + config.readPublicIpv4AddressFrom);
         }
