@@ -2,6 +2,16 @@
 
 A Dynamic DNS client for [Dnsimple](http://dnsimple.com) in C#. Console program for Windows, designed to run as a scheduled task.
 
+** IMPORTANT **
+
+DnsimpleDynamic was coded for an older version of the Dnsimple API.
+It will not work with the new API without modification.
+When the old API is turned off, it will not work, period.
+
+I no longer have need for dynamic IP updates, so have no plans to update to the new API.
+
+** IMPORTANT **
+
 ## Features ##
 * Multiple Domain Names
 * Internal / private IPv4 addresses (eg: 192.168.x.x)
